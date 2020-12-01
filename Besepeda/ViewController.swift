@@ -185,6 +185,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            manager.stopUpdatingLocation()
+
+            render(location)
+        }
         for newLocation in locations {
           let howRecent = newLocation.timestamp.timeIntervalSinceNow
           guard newLocation.horizontalAccuracy < 20 && abs(howRecent) < 10 else { continue }
