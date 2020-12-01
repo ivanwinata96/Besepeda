@@ -23,8 +23,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var hatihatiLabel: UILabel!
     
     let manager = CLLocationManager()
-    
-//    private var run = Run?
+//    var run1: Run!
+//    private var run: Run?
     private var seconds = 0
     private var timer: Timer?
     private var distance = Measurement(value: 0, unit: UnitLength.meters)
@@ -121,7 +121,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         present(alertController, animated: true)
     }
     
-//   map
+// MARK:   Map
     override func viewDidAppear(_ animated: Bool) {
 //        super.viewDidAppear(animated)
         manager.desiredAccuracy = kCLLocationAccuracyBest
@@ -131,23 +131,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
-            manager.stopUpdatingLocation()
-
-            render(location)
-        }
         for newLocation in locations {
-              let howRecent = newLocation.timestamp.timeIntervalSinceNow
-              guard newLocation.horizontalAccuracy < 20 && abs(howRecent) < 10 else { continue }
+          let howRecent = newLocation.timestamp.timeIntervalSinceNow
+          guard newLocation.horizontalAccuracy < 20 && abs(howRecent) < 10 else { continue }
 
-              if let lastLocation = locationList.last {
-                let delta = newLocation.distance(from: lastLocation)
-                distance = distance + Measurement(value: delta, unit: UnitLength.meters)
-              }
+          if let lastLocation = locationList.last {
+            let delta = newLocation.distance(from: lastLocation)
+            distance = distance + Measurement(value: delta, unit: UnitLength.meters)
+          }
 
-              locationList.append(newLocation)
-            }
-    }
+          locationList.append(newLocation)
+        }
+      }
     
     private func startLocationUpdates() {
       manager.delegate = self
