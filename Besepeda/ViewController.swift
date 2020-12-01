@@ -23,6 +23,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var hatihatiLabel: UILabel!
     
     let manager = CLLocationManager()
+    
+    var backgroundTask: UIBackgroundTaskIdentifier = .invalid
+    func registerBackgroundTask() {
+      backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
+        self?.endBackgroundTask()
+      }
+      assert(backgroundTask != .invalid)
+    }
+      
+    func endBackgroundTask() {
+      print("Background task ended.")
+      UIApplication.shared.endBackgroundTask(backgroundTask)
+      backgroundTask = .invalid
+    }
+
 //    var run1: Run!
 //    private var run: Run?
     private var seconds = 0
@@ -103,6 +118,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         distanceLabelDone.isHidden = false
         titleLabel.isHidden = false
         titleLabel.text = "Ya udah, istirahat sana!"
+        hatihatiLabel.isHidden = true
     
     }
     
