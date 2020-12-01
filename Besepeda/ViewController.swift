@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import AVFoundation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
@@ -42,8 +43,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 //    private var run: Run?
     private var seconds = 0
     private var timer: Timer?
-    private var distance = Measurement(value: 0, unit: UnitLength.meters)
+    private var distance = Measurement(value: 0, unit: UnitLength.kilometers)
     private var locationList: [CLLocation] = []
+    var timerSpeech = Timer()
 
     
     override func viewDidLoad() {
@@ -52,6 +54,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // Do any additional setup after loading the view.
         stopButton.isHidden = true
         titleLabel.text = "Redi? Yok!"
+        
     }
         
     override func viewWillDisappear(_ animated: Bool) {
@@ -70,10 +73,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
       let formattedDistance = FormatDisplay.distance(distance)
       let formattedTime = FormatDisplay.time(seconds)
 
+        
       distanceLabel.text = "\(formattedDistance)"
       timeLabel.text = "\(formattedTime)"
         distanceLabelDone.text = "\(formattedDistance)"
         timeLabelDone.text = "\(formattedTime)"
+        
+    
     }
     private func configureView(){
         startButton.layer.cornerRadius = 12
@@ -83,6 +89,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         timeLabelDone.isHidden = true
         distanceLabelDone.isHidden = true
         hatihatiLabel.isHidden = true
+        
+        
+       
     }
     private func startRun(){
         startButton.isHidden = true
@@ -94,7 +103,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         distanceLabelDone.isHidden = true
         hatihatiLabel.isHidden = false
         titleLabel.isHidden = true
-    
         
         seconds = 0
         distance = Measurement(value: 0, unit: UnitLength.meters)
@@ -104,14 +112,36 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
           self.eachSecond()
         }
         startLocationUpdates()
+        
+        timerSpeech = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(ngomong), userInfo: nil, repeats: true)
+        
+        let string = "Gak usah sok ngebut, entar jatoh, nangis kau!"
+        let utterance = AVSpeechUtterance(string: string)
+        utterance.voice = AVSpeechSynthesisVoice(language: "id-ID")
+        
+
+        let synth = AVSpeechSynthesizer()
+        synth.speak(utterance)
 
     }
+    
+    @objc func ngomong(){
+        let utterance = AVSpeechUtterance(string: "\(FormatDisplay.distance(distance))")
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-AU")
+        
+
+        let synth = AVSpeechSynthesizer()
+        synth.speak(utterance)
+    }
+    
+    
     
     private func stopRun(){
         startButton.isHidden = false
         stopButton.isHidden = true
         mapView.isHidden = false
         timer?.invalidate()
+        timerSpeech.invalidate()
         distanceLabel.isHidden = true
         timeLabel.isHidden = true
         timeLabelDone.isHidden = false
@@ -119,6 +149,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         titleLabel.isHidden = false
         titleLabel.text = "Ya udah, istirahat sana!"
         hatihatiLabel.isHidden = true
+        
+        let string = "Jangan lupa minum air, dasar ampas!"
+        let utterance = AVSpeechUtterance(string: string)
+        utterance.voice = AVSpeechSynthesisVoice(language: "id-ID")
+        
+
+        let synth = AVSpeechSynthesizer()
+        synth.speak(utterance)
     
     }
     
@@ -183,6 +221,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
+   
     
    
 }
