@@ -16,6 +16,9 @@
 		0D35480725693A73004C3F1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D35480525693A73004C3F1D /* LaunchScreen.storyboard */; };
 		0D35481225693A73004C3F1D /* BesepedaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D35481125693A73004C3F1D /* BesepedaTests.swift */; };
 		0D35481D25693A73004C3F1D /* BesepedaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D35481C25693A73004C3F1D /* BesepedaUITests.swift */; };
+		0D6E88B72575EC230033D6C0 /* RunDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6E88B62575EC230033D6C0 /* RunDetailViewController.swift */; };
+		0D6E88C32575F6C40033D6C0 /* UnitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6E88C22575F6C40033D6C0 /* UnitExtension.swift */; };
+		0D6E88C82575FE660033D6C0 /* FormatDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6E88C72575FE660033D6C0 /* FormatDisplay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		0D35481825693A73004C3F1D /* BesepedaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BesepedaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D35481C25693A73004C3F1D /* BesepedaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BesepedaUITests.swift; sourceTree = "<group>"; };
 		0D35481E25693A73004C3F1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D6E88B62575EC230033D6C0 /* RunDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunDetailViewController.swift; sourceTree = "<group>"; };
+		0D6E88C22575F6C40033D6C0 /* UnitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnitExtension.swift; path = Besepeda/UnitExtension.swift; sourceTree = "<group>"; };
+		0D6E88C72575FE660033D6C0 /* FormatDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDisplay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,8 @@
 		0D3547EB25693A71004C3F1D = {
 			isa = PBXGroup;
 			children = (
+				0D6E88C72575FE660033D6C0 /* FormatDisplay.swift */,
+				0D6E88C22575F6C40033D6C0 /* UnitExtension.swift */,
 				0D3547F625693A71004C3F1D /* Besepeda */,
 				0D35481025693A73004C3F1D /* BesepedaTests */,
 				0D35481B25693A73004C3F1D /* BesepedaUITests */,
@@ -104,6 +112,7 @@
 				0D3547F725693A71004C3F1D /* AppDelegate.swift */,
 				0D3547F925693A71004C3F1D /* SceneDelegate.swift */,
 				0D3547FB25693A71004C3F1D /* ViewController.swift */,
+				0D6E88B62575EC230033D6C0 /* RunDetailViewController.swift */,
 				0D3547FD25693A71004C3F1D /* Main.storyboard */,
 				0D35480325693A73004C3F1D /* Assets.xcassets */,
 				0D35480525693A73004C3F1D /* LaunchScreen.storyboard */,
@@ -262,9 +271,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D3547FC25693A71004C3F1D /* ViewController.swift in Sources */,
+				0D6E88C82575FE660033D6C0 /* FormatDisplay.swift in Sources */,
 				0D3547F825693A71004C3F1D /* AppDelegate.swift in Sources */,
 				0D35480225693A71004C3F1D /* Besepeda.xcdatamodeld in Sources */,
+				0D6E88B72575EC230033D6C0 /* RunDetailViewController.swift in Sources */,
 				0D3547FA25693A71004C3F1D /* SceneDelegate.swift in Sources */,
+				0D6E88C32575F6C40033D6C0 /* UnitExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +455,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 37P7N7R8J2;
 				INFOPLIST_FILE = Besepeda/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -450,7 +463,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.IvanW.Besepeda;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -462,6 +475,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 37P7N7R8J2;
 				INFOPLIST_FILE = Besepeda/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -469,7 +483,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.IvanW.Besepeda;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
